@@ -1,8 +1,8 @@
 /*
     Solution by: Srihari Vishnu
-    Created: December 28 2024
+    Created: July 22 2025
 
-    C++
+    1398C
 */
 
 #include <bits/stdc++.h>
@@ -28,8 +28,8 @@ typedef long long ll;
 typedef long double ld;
 typedef pair<int, int> pii;
 typedef pair<ll, ll> pll;
-typedef tuple<int, int, int> tiii;
 typedef vector<int> vi;
+typedef tuple<int, int, int> tiii;
 
 const int dirs[4][2] = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
 
@@ -37,16 +37,42 @@ const ll MOD = 1e9 + 7;
 const ll INF = 1e9;
 const ld EPS = 1e-9;
 
-const int MAXN = 1e5 + 5;
+const int MAXN = 2e5 + 5;
 
-void solve() {}
+
+
+void solve() {
+    int n;
+    cin >> n;
+
+    vi arr(n);
+    FOR(i, 0, n) {
+        char x;
+        cin >> x;
+        arr[i] = (x - '0') - 1;
+    }
+
+    map<ll, ll> pref;
+    pref[0] = 1;
+
+    ll ans = 0, s = 0;
+    FOR(i, 0, n) {
+        s += arr[i];
+        ans += pref[s];
+        pref[s]++;
+    }
+
+    cout << ans << endl;
+}
 
 int main() {
-	// freopen("", "r", stdin);
-	// freopen("", "w", stdout);
-	ios_base::sync_with_stdio(0);
-	cin.tie(0);
-	int tc = 1;
-	// cin >> tc;
-	for (int t = 1; t <= tc; t++) { solve(); }
+    // freopen("", "r", stdin);
+    // freopen("", "w", stdout);
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    int tc = 1;
+    cin >> tc;
+    for (int t = 1; t <= tc; t++) {
+        solve();
+    }
 }
